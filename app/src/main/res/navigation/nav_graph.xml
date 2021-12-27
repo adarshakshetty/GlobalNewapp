@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_nav_graph"
+    app:startDestination="@id/feedFragment">
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.global.news.presentation.ui.GlobalNewsFragment"
+        android:label="@string/tops_news">
+        <action
+            android:id="@+id/action_feedFragment_to_DetailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.global.news.presentation.ui.BookmarksFragment"
+        android:label="@string/bookmarks">
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.global.news.presentation.ui.DetailsFragment"
+        android:label="@string/details">
+        <argument
+            android:name="news"
+            app:argType="com.global.news.data.model.NewsArticle" />
+        <argument
+            android:name="isFromFavorite"
+            app:argType="boolean" />
+    </fragment>
+</navigation>
